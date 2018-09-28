@@ -7,8 +7,8 @@ Blog pour un écrivain (qui n'aime pas WordPress)
 - [x] Installation de WAMP
 - [x] Configurer WAMP pour voir les erreurs php
 - [x] Variables, boucles ...
-- [] Arrays, fonctions
-- [] MySQL
+- [ ] Arrays, fonctions
+- [ ] MySQL
 
 ### 2) Cours OC : [Programmez en orienté objet en PHP](https://openclassrooms.com/fr/courses/1665806-programmez-en-oriente-objet-en-php)
 
