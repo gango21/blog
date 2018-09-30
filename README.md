@@ -7,8 +7,17 @@ Blog pour un écrivain (qui n'aime pas WordPress)
 - [x] Installation de WAMP
 - [x] Configurer WAMP pour voir les erreurs php
 - [x] Variables, boucles ...
-- [ ] Arrays, fonctions
-- [ ] MySQL
+- [x] Arrays, fonctions
+- [x] Inclure des portions de page
+- [x] Transmettre des données avec l'URL
+- [x] Transmettre des données avec les formulaires
+- [x] TP : page protégée par mot de passe
+- [x] Variables superglobales
+- [x] Session & Cookies
+- [x] Lire et écrire dans un fichier
+- [x] Bases de données
+- [x] phpMyAdmin
+- [ ] Lire des données
 
 ### 2) Cours OC : [Programmez en orienté objet en PHP](https://openclassrooms.com/fr/courses/1665806-programmez-en-oriente-objet-en-php)
 
