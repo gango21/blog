@@ -17,7 +17,11 @@ Blog pour un écrivain (qui n'aime pas WordPress)
 - [x] Lire et écrire dans un fichier
 - [x] Bases de données
 - [x] phpMyAdmin
-- [ ] Lire des données
+- [x] Lire des données
+- [x] Écrire des données
+- [x] TP : un mini-chat
+- [ ] Les fonctions SQL
+
 
 ### 2) Cours OC : [Programmez en orienté objet en PHP](https://openclassrooms.com/fr/courses/1665806-programmez-en-oriente-objet-en-php)
 
