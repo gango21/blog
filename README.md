@@ -25,7 +25,8 @@ Blog pour un écrivain (qui n'aime pas WordPress)
 
 ### 2) Cours OC : [Programmez en orienté objet en PHP](https://openclassrooms.com/fr/courses/1665806-programmez-en-oriente-objet-en-php)
 - [x] Introduction à la POO
-- [ ] Utiliser la classe
+- [x] Utiliser la classe
+- [ ] L'opérateur de résolution de portée
 
 ### 3) Cours OC : [Adoptez une architecture MVC en PHP](https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php)
 
