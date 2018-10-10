@@ -20,7 +20,10 @@ Blog pour un écrivain (qui n'aime pas WordPress)
 - [x] Lire des données
 - [x] Écrire des données
 - [x] TP : un mini-chat
-- [ ] Les fonctions SQL
+- [x] Les fonctions SQL
+- [x] Les dates en SQL
+- [x] TP : un blog avec des commentaires
+- [ ] Les jointures entre tables
 
 
 ### 2) Cours OC : [Programmez en orienté objet en PHP](https://openclassrooms.com/fr/courses/1665806-programmez-en-oriente-objet-en-php)
