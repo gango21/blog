@@ -15,7 +15,7 @@ while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
 {
     echo $donnees['id'], $donnees['titre'], $donnees['contenu'], $donnees['date_creation'];
     $billet = new Billet($donnees);
-    echo $billet->id(), $billet->titre(), $billet->contenu(), $billet->tellId();
+    echo $billet->id(), $billet->titre(), $billet->contenu();
 }
 $request ->closeCursor();
 
