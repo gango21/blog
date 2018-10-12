@@ -23,13 +23,15 @@ Blog pour un écrivain (qui n'aime pas WordPress)
 - [x] Les fonctions SQL
 - [x] Les dates en SQL
 - [x] TP : un blog avec des commentaires
-- [ ] Les jointures entre tables
+- [x] Les jointures entre tables
+- 
 
 
 ### 2) Cours OC : [Programmez en orienté objet en PHP](https://openclassrooms.com/fr/courses/1665806-programmez-en-oriente-objet-en-php)
 - [x] Introduction à la POO
 - [x] Utiliser la classe
 - [ ] L'opérateur de résolution de portée
+- [x] Manipulation de données stockées
 
 ### 3) Cours OC : [Adoptez une architecture MVC en PHP](https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php)
 
@@ -46,3 +48,7 @@ Blog pour un écrivain (qui n'aime pas WordPress)
 * Code sera construit sur une architecture MVC
 * Autant que possible en orienté objet (au minimum, le modèle doit être construit sous forme d'objet)
 * Github : progression régulière par petites étapes
+
+* index.php : appel l'affichage du site
+* indexView.php : affiche les billets du blog
+* model.php : se connecte a la base de donnée + class Billet
