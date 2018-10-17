@@ -1,5 +1,6 @@
 <?php
 require 'Billet.php';
+require 'Comment.php';
 
 //Connexion à la base de données
 try
@@ -11,12 +12,19 @@ catch(Exception $e)
     die('Erreur : '.$e->getMessage());
 }
 
-$request = $db->query('SELECT id, titre, contenu, date_creation FROM billets');
+//Récupérer données de la table billets et commentaires
+$request = $db->query('
+SELECT billets.id, titre, contenu, date_creation, commentaires.id, id_billets, content, author, date_comment
+FROM billets
+INNER JOIN commentaires
+ON billets.id = id_billets
+');
 
 while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
 {
     $billet = new Billet($donnees);
-    echo $billet->id(), $billet->titre(), $billet->contenu();
+    $comment = new Comment($donnees);
+    echo $billet->id(), $billet->titre(), $billet->contenu(), $comment->id(), $comment->id_billets(), $comment->content(), $comment->author(), $comment->date_comment();
 }
 $request ->closeCursor();
 ?>
