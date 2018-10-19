@@ -1,30 +1,56 @@
 <?php
-require 'Billet.php';
-require 'Comment.php';
+require 'Post.php';
 
-//Connexion à la base de données
-try
+class PostManager
+
 {
-    $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8','root','');
-}
-catch(Exception $e)
-{
-    die('Erreur : '.$e->getMessage());
+    //Connexion à la base de données
+    private function dbConnect()
+    {
+        try
+        {
+            $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8','root','');
+            return $db;
+        }
+        catch(Exception $e)
+        {
+            die('Erreur : '.$e->getMessage());
+        }
+    }
+
+    //Récupérer données de la table billets
+    public function getPosts()
+    {
+        $db = $this->dbConnect();
+        $request = $db->query('SELECT id, title, content, date_creation FROM posts');
+
+        while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
+        {
+            $posts = new Post($donnees);
+            echo $posts->id(), $posts->title(), $posts->content(), $posts->date_creation();
+        }
+        $request ->closeCursor();
+    }
+
+
+    //Récupèrer un post en particulier
+    public function getPost()
+    {
+        $db = $this->dbConnect();
+        $request = $db->query('SELECT title, content, date_creation FROM posts WHERE id=');
+
+        while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
+        {
+            $posts = new Post($donnees);
+            echo $posts->id(), $posts->title(), $posts->content(), $posts->date_creation();
+        }
+        $request ->closeCursor();
+    }
+
+    // Ajouter un post
 }
 
-//Récupérer données de la table billets et commentaires
-$request = $db->query('
-SELECT billets.id, titre, contenu, date_creation, commentaires.id, id_billets, content, author, date_comment
-FROM billets
-INNER JOIN commentaires
-ON billets.id = id_billets
-');
 
-while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
-{
-    $billet = new Billet($donnees);
-    $comment = new Comment($donnees);
-    echo $billet->id(), $billet->titre(), $billet->contenu(), $comment->id(), $comment->id_billets(), $comment->content(), $comment->author(), $comment->date_comment();
-}
-$request ->closeCursor();
+
+
 ?>
