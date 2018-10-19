@@ -51,4 +51,6 @@ Blog pour un écrivain (qui n'aime pas WordPress)
 
 * index.php : appel l'affichage du site
 * indexView.php : affiche les billets du blog
-* model.php : se connecte a la base de donnée + class Billet
+* model.php : clas PostManage se connecte a la base de donnée
+* Post.php : class Post
+* Comment.php : class Comment
