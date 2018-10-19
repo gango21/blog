@@ -1,10 +1,10 @@
 <?php
 
-class Billet
+class Post
 {
     private $_id;
-    private $_titre;
-    private $_contenu;
+    private $_title;
+    private $_content;
     private $_date_creation;
 
     public function __construct(array $donnees)
@@ -23,8 +23,8 @@ class Billet
     // Liste des getters
 
     public function id() {return $this->_id;}
-    public function titre(){return $this->_titre;}
-    public function contenu(){return $this->_contenu;}
+    public function title(){return $this->_title;}
+    public function content(){return $this->_content;}
     public function date_creation(){return $this->_date_creation;}
 
     //Liste des setters
@@ -38,19 +38,19 @@ class Billet
         }
     }
 
-    public function setTitre($titre)
+    public function setTitle($title)
     {
-        if (is_string($titre))
+        if (is_string($title))
         {
-        $this->_titre = $titre;
+        $this->_title = $title;
         }
     }
 
-    public function setContenu($contenu)
+    public function setContent($content)
     {
-        if (is_string($contenu))
+        if (is_string($content))
         {
-            $this->_contenu = $contenu;
+            $this->_content = $content;
         }
     }
 
