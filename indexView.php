@@ -10,6 +10,8 @@
         <h1>Blog</h1>
         <p>Derniers billets du blog :</p>
         <div class="news">
+            <h3>
+            </h3>
         </div>
     </body>
 </html>
