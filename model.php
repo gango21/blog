@@ -5,52 +5,64 @@ class PostManager
 
 {
     //Connexion à la base de données
-    private function dbConnect()
+
+    private $_db;
+
+    public function __construct($db)
     {
-        try
-        {
-            $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8','root','');
-            return $db;
-        }
-        catch(Exception $e)
-        {
-            die('Erreur : '.$e->getMessage());
-        }
+        $this->setDb($db);
     }
 
-    //Récupérer données de la table billets
+    //Récupérer données de la table posts
     public function getPosts()
     {
-        $db = $this->dbConnect();
-        $request = $db->query('SELECT id, title, content, date_creation FROM posts');
 
-        while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
+        $posts=[];
+
+        $q = $this->_db->query('SELECT id, title, content, date_creation FROM posts');
+
+        while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
         {
-            $posts = new Post($donnees);
-            echo $posts->id(), $posts->title(), $posts->content(), $posts->date_creation();
+            $posts[] = new Post($donnees);
         }
-        $request ->closeCursor();
+        return $posts;
     }
 
 
-    //Récupèrer un post en particulier
-    public function getPost()
+    /*Récupèrer un post en particulier
+    public function getPost(id)
     {
-        $db = $this->dbConnect();
-        $request = $db->query('SELECT title, content, date_creation FROM posts WHERE id=');
+        $id = (int) $id;
 
-        while ($donnees = $request->fetch(PDO::FETCH_ASSOC))
-        {
-            $posts = new Post($donnees);
-            echo $posts->id(), $posts->title(), $posts->content(), $posts->date_creation();
-        }
-        $request ->closeCursor();
+        $q = $this->_db->query('SELECT id, title, content, date_creation FROM posts WHERE id = '.$id);
+        $donnees = $q->fetch(PDO::FETCH_ASSOC);
+
+        return new Post($donnees);
     }
 
     // Ajouter un post
+    public function addPost(Post $post)
+    {
+        $q = $this->_db->prepare('INSERT INTO posts(id, title, content, date_creation) VALUES(:id, :title, :content, :date_creation)');
+
+        $q->bindValue(':id', $post->setId());
+        $q->bindValue(':title', $post->setTtitle());
+        $q->bindValue(':content', $post->setContent());
+        $q->bindValue(':date_creation', $post->setDte_creation());
+
+        $q->execute();
+    }
+
+    //Supprimer un post
+    public function delete(Post $post)
+    {
+        $this->_db->exec('DELETE FROM posts WHERE id = '.$post->setId());
+    }*/
+
+    public function setDb(PDO $db)
+    {
+        $this->_db = $db;
+    }
+
 }
-
-
-
-
 ?>
