@@ -10,8 +10,15 @@
         <h1>Blog</h1>
         <p>Derniers billets du blog :</p>
         <div class="news">
-            <h3>
-            </h3>
+                <?php
+                for ($i=0; $i<count($posts); $i++){?>
+                    <h3><?php echo $posts[$i]->title();?> </h3>
+                    <p><?php echo $posts[$i]->content();?></p>
+                    <a href="post.php?billet=<?php echo $posts[$i]->id(); ?>">Commentaires</a>
+                <?php
+                }
+                var_dump($posts); //Voir le contenu de l'array $posts
+                ?>
         </div>
     </body>
 </html>
