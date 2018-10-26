@@ -1,7 +1,9 @@
 <?php
-require('model.php');
-require('indexView.php');
+require('Postmanager.php');
 
-$postManager = new PostManager;
-$postManager->getPosts();
+$db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
+$postManager = new PostManager($db);
+$posts = $postManager->getPosts();
+
+require('indexView.php');
 ?>
