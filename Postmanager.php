@@ -29,8 +29,8 @@ class PostManager
     }
 
 
-    /*Récupèrer un post en particulier
-    public function getPost(id)
+    //Récupèrer un post en particulier
+    public function getPost($id)
     {
         $id = (int) $id;
 
@@ -40,7 +40,7 @@ class PostManager
         return new Post($donnees);
     }
 
-    // Ajouter un post
+    /* Ajouter un post
     public function addPost(Post $post)
     {
         $q = $this->_db->prepare('INSERT INTO posts(id, title, content, date_creation) VALUES(:id, :title, :content, :date_creation)');
