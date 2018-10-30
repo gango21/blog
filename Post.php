@@ -57,7 +57,10 @@ class Post
     public function setDate_creation($date_creation)
     {
     // vérifier la date
-        $this->_date_creation = $date_creation;
+        if (is_string($date_creation))
+        {
+            $this->_date_creation = $date_creation;
+        }
     }
 
 }
