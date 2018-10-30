@@ -14,10 +14,9 @@
                 for ($i=0; $i<count($posts); $i++){?>
                     <h3><?php echo $posts[$i]->title();?> </h3>
                     <p><?php echo $posts[$i]->content();?></p>
-                    <a href="post.php?billet=<?php echo $posts[$i]->id(); ?>">Commentaires</a>
+                    <a href="postindex.php?postId=<?php echo $posts[$i]->id(); ?>">Commentaires</a>
                 <?php
                 }
-                var_dump($posts); //Voir le contenu de l'array $posts
                 ?>
         </div>
     </body>
