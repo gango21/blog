@@ -26,6 +26,12 @@ class CommentManager
         return $comments;
     }
 
+    public function addComment($postId, $author, $content_comment, $date_comment)
+    {
+        $q = $this->_db->prepare('INSERT INTO comments(id_post, author, content_comment, date_comment) VALUES(?, ?, ?, ?)');
+        $q->execute(array($postId, $author, $content_comment, $date_comment));
+    }
+
     public function setDb(PDO $db)
     {
         $this->_db = $db;
