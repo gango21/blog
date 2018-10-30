@@ -3,7 +3,7 @@
 class Comment
 {
     private $_id;
-    private $_id_billets;
+    private $_id_post;
     private $_author;
     private $_content_comment;
     private $_date_comment;
@@ -24,9 +24,9 @@ class Comment
     // Liste des getters
 
     public function id() {return $this->_id;}
-    public function id_billets(){return $this->_id_billets;}
+    public function id_post(){return $this->_id_post;}
     public function author(){return $this->_author;}
-    public function content(){return $this->_content;}
+    public function content_comment(){return $this->_content_comment;}
     public function date_comment(){return $this->_date_comment;}
 
     //Liste des setters
@@ -40,12 +40,12 @@ class Comment
         }
     }
 
-    public function setTitre($id_billets)
+    public function setId_post($id_post)
     {
-        $id_billets = (int) $id_billets;
-        if ($id_billets > 0)
+        $id_post = (int) $id_post;
+        if ($id_post > 0)
         {
-            $this->_id_billets = $id_billets;
+            $this->_id_post = $id_post;
         }
     }
 
@@ -57,18 +57,21 @@ class Comment
         }
     }
 
-    public function setContent($content)
+    public function setContent_comment($content_comment)
     {
-        if (is_string($content))
+        if (is_string($content_comment))
         {
-            $this->_content = $content;
+            $this->_content_comment = $content_comment;
         }
     }
 
     public function setDate_comment($date_comment)
     {
     // vérifier la date
-        $this->_date_comment = $date_comment;
+        if (is_string($date_comment))
+        {
+            $this->_date_comment = $date_comment;
+        }
     }
 
 }
