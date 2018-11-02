@@ -7,6 +7,7 @@ class Comment
     private $_author;
     private $_content_comment;
     private $_date_comment;
+    private $_signal_comment;
 
     public function __construct(array $donnees)
     {
@@ -28,6 +29,7 @@ class Comment
     public function author(){return $this->_author;}
     public function content_comment(){return $this->_content_comment;}
     public function date_comment(){return $this->_date_comment;}
+    public function signal_comment(){return $this->_signal_comment;}
 
     //Liste des setters
 
@@ -71,6 +73,15 @@ class Comment
         if (is_string($date_comment))
         {
             $this->_date_comment = $date_comment;
+        }
+    }
+
+    public function setSignal_comment($signal_comment)
+    {
+        $signal_comment = (int) $signal_comment;
+        if ($signal_comment >= 0)
+        {
+            $this->_signal_comment = $signal_comment;
         }
     }
 
