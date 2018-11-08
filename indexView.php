@@ -14,9 +14,6 @@
                 }
                 ?>
         </div>
-    <footer>
-        <a href="admin.php">Admin</a>
-    </footer>
     <?php $content = ob_get_clean(); ?>
     <?php require('template.php'); ?>
 </html>
