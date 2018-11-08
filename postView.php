@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Mon blog</title>
-        <link href="style.css" rel="stylesheet" />
-    </head>
-
-    <body>
+    <title><?= htmlspecialchars_decode($post->title()); ?></title>
+    <?php ob_start(); ?>
         <h1>Blog</h1>
         <p><a href="index.php">Retour à la liste des billets</a></p>
 
@@ -22,12 +17,27 @@
         </div>
 
         <h2>Commentaires</h2>
-
+        <div class="comments">
 
         <?php
-    for ($i=0; $i<count($comments); $i++){?>
-        <p><strong><?php echo htmlspecialchars_decode($comments[$i]->author()); ?></strong> le <?php echo $comments[$i]->date_comment(); ?></p>
+        for ($i=0; $i<count($comments); $i++){?>
+        <h3><strong><?php echo htmlspecialchars_decode($comments[$i]->author()); ?></strong> <em>le <?php echo $comments[$i]->date_comment(); ?></em></h3>
         <p><?php echo nl2br(htmlspecialchars_decode($comments[$i]->content_comment())); ?></p>
+        <form action="postindex.php?postId=<?php echo $post->id(); ?>" method="post">
+            <input type="hidden" name="id" value="<?php echo $comments[$i]->id(); ?>">
+            <input type="hidden" name="signal_comment" value="1">
+            <?php $signal = $comments[$i]->signal_comment();
+            if ($signal != 0){?>
+                <input type="submit"  value="Commentaire signalé" disabled>
+            <?php
+            }
+            else{
+            ?>
+                <input type="submit"  value="Signaler le commentaire">
+            <?php
+            }
+            ?>
+        </form>
         <?php
         }
         ?>
@@ -39,9 +49,10 @@
             <input type="text" name="author" value=""><br>
             Commentaire
             <input type="text" name="content_comment" value=""><br>
-            <input type="hidden" name="date_comment" value="<?php echo date("Y-m-d H:i:s"); ?>"><br>
             <input type="hidden" name="id_post" value="<?php echo $post->id(); ?>"><br>
             <input type="submit" value="Valider" />
         </form>
-    </body>
+        </div>
+        <?php $content = ob_get_clean(); ?>
+        <?php require('template.php'); ?>
 </html>
