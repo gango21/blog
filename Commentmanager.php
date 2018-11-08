@@ -15,7 +15,7 @@ class CommentManager
 
     public function getComments($id)
     {
-        $q = $this->_db->query('SELECT id, id_post, author, content_comment, date_comment FROM comments WHERE id_post = '.$id);
+        $q = $this->_db->query('SELECT id, id_post, author, content_comment, date_comment, signal_comment FROM comments WHERE id_post = '.$id);
 
         $comments = [];
 
@@ -26,10 +26,17 @@ class CommentManager
         return $comments;
     }
 
-    public function addComment($postId, $author, $content_comment, $date_comment)
+    public function addComment($postId, $author, $content_comment)
     {
-        $q = $this->_db->prepare('INSERT INTO comments(id_post, author, content_comment, date_comment) VALUES(?, ?, ?, ?)');
-        $q->execute(array($postId, $author, $content_comment, $date_comment));
+        $signal_comment = 0;
+        $date_comment = date("Y-m-d H:i:s");
+        $q = $this->_db->prepare('INSERT INTO comments(id_post, author, content_comment, date_comment, signal_comment) VALUES(?, ?, ?, ?, ?)');
+        $q->execute(array($postId, $author, $content_comment, $date_comment, $signal_comment));
+    }
+
+    public function signalComment($id)
+    {
+        $q = $this->_db->exec('UPDATE comments SET signal_comment=1 WHERE id=' .$id);
     }
 
     public function setDb(PDO $db)
