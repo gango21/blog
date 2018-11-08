@@ -3,7 +3,6 @@
     <title><?= htmlspecialchars_decode($post->title()); ?></title>
     <?php ob_start(); ?>
         <h1>Blog</h1>
-        <p><a href="index.php">Retour à la liste des billets</a></p>
 
         <div class="news">
             <h3>
