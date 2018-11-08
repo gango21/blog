@@ -25,3 +25,15 @@ a
 text-decoration: none;
 color: blue;
 }
+
+.comments p
+{
+    background-color:#CCCCCC;
+    margin-top:0px;
+}
+
+.comments
+{
+    width:70%;
+    margin:auto;
+}
