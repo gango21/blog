@@ -40,24 +40,26 @@ class PostManager
         return new Post($donnees);
     }
 
-    /* Ajouter un post
-    public function addPost(Post $post)
+    // Ajouter un post
+    public function addPost($title, $content)
     {
-        $q = $this->_db->prepare('INSERT INTO posts(id, title, content, date_creation) VALUES(:id, :title, :content, :date_creation)');
+        $date = date("Y-m-d H:i:s");
+        $q = $this->_db->prepare('INSERT INTO posts(title, content, date_creation) VALUES(?, ?, ?)');
+        $q->execute(array($title, $content, $date));
+    }
 
-        $q->bindValue(':id', $post->setId());
-        $q->bindValue(':title', $post->setTtitle());
-        $q->bindValue(':content', $post->setContent());
-        $q->bindValue(':date_creation', $post->setDte_creation());
-
-        $q->execute();
+    // Editer un post
+    public function editPost($id, $title, $content)
+    {
+        $date = date("Y-m-d H:i:s");
+        $q = $this->_db->exec('UPDATE posts SET title =' .$title.', content = '.$content.', date_creation = '.$date.' WHERE id=' .$id);
     }
 
     //Supprimer un post
-    public function delete(Post $post)
+    public function deletePost($id)
     {
-        $this->_db->exec('DELETE FROM posts WHERE id = '.$post->setId());
-    }*/
+        $q = $this->_db->exec('DELETE FROM posts WHERE id=' .$id);
+    }
 
     public function setDb(PDO $db)
     {
