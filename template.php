@@ -7,7 +7,7 @@
     </head>
     <header>
         <a href="index.php">Liste des billets</a>
-        <a href="adminView.php">Admin</a>
+        <a href="admin.php">Admin</a>
     </header>
     <body>
         <?= $content ?>
