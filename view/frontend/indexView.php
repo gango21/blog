@@ -9,7 +9,7 @@
                 for ($i=0; $i<count($posts); $i++){?>
                     <h3><?php echo $posts[$i]->title();?> </h3>
                     <p><?php echo $posts[$i]->content();?></p>
-                    <a href="postindex.php?postId=<?php echo $posts[$i]->id(); ?>">Commentaires</a>
+                    <a href="index.php?action=post&postId=<?php echo $posts[$i]->id(); ?>">Commentaires</a>
                 <?php
                 }
                 ?>

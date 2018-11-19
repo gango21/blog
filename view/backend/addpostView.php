@@ -13,15 +13,11 @@
     </script>
 
     <body>
-        <form method="post">
-            <input type="text" name="idPostEdit" value="<?php echo $post->id() ?>" hidden><br>
-            <input type="text" name="titlePostEdit" value="<?php echo $post->title() ?>"><br>
-            <textarea id="mytextarea" name="contentPostEdit" value=""><?php echo $post->content() ?></textarea>
+        <form method="post" action="">
+            <input type="text" name="titlepost" value="Titre du Post"><br>
+            <textarea id="mytextarea" name="content">Hello, World!</textarea>
             <input type="submit"  value="Envoyer">
         </form>
-        <?php var_dump($titlepost);
-                   var_dump($id);
-                   var_dump($content)?>
     </body>
 
     <?php $content = ob_get_clean(); ?>

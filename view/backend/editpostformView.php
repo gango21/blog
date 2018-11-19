@@ -14,8 +14,9 @@
 
     <body>
         <form method="post">
-            <input type="text" name="titlepost" value="Titre du Post"><br>
-            <textarea id="mytextarea" name="content">Hello, World!</textarea>
+            <input type="text" name="idPostEdit" value="<?php echo $post->id() ?>" hidden><br>
+            <input type="text" name="titlePostEdit" value="<?php echo $post->title() ?>"><br>
+            <textarea id="mytextarea" name="contentPostEdit"><?php echo $post->content() ?></textarea>
             <input type="submit"  value="Envoyer">
         </form>
     </body>

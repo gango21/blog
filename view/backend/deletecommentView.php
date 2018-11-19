@@ -9,11 +9,11 @@
             for ($i=0; $i<count($signaledcomments); $i++){?>
             <h3><?php echo $signaledcomments[$i]->author();?> </h3>
             <p><?php echo $signaledcomments[$i]->content_comment();?> </p>
-            <form action="deletecommentsIndex.php" method="post">
+            <form method="post">
                 <input type="hidden" name="id_delete" value="<?php echo $signaledcomments[$i]->id(); ?>">
                 <input type="submit" value="Supprimer" />
             </form>
-            <form action="deletecommentsIndex.php" method="post">
+            <form method="post">
                 <input type="hidden" name="id_ignore" value="<?php echo $signaledcomments[$i]->id(); ?>">
                 <input type="submit" value="Ignorer" />
             </form>
