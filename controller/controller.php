@@ -1,7 +1,8 @@
 <?php
-
+session_start();
 require('model/Postmanager.php');
 require('model/Commentmanager.php');
+require('model/Adminmanager.php');
 
 //frontend
 
@@ -42,18 +43,42 @@ function post()
 
 function admin()
 {
-    if (!isset($_POST['user']) OR !isset($_POST['password']) OR ($_POST['user'] != "admin" OR $_POST['password'] != "password")){
-        echo "Vous n'êtes pas authentifié";
+    $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
+    $adminManager = new Adminmanager($db);
+    $admin = $adminManager->connectAdmin();
+
+    if (!isset($_POST['user']) OR !isset($_POST['password']) OR ($_POST['user'] != $admin['user'] OR MD5($_POST[('password')]) != $admin['password'])){
     }
     else{
-        echo "Vous êtes authentifié";
+        $_SESSION['admin']=$_POST['user'];
     }
     require('view/backend/adminView.php');
 }
 
 //backend
 
+function editPassword()
+{
+    $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
+    $adminManager = new Adminmanager($db);
+    $admin = $adminManager->connectAdmin();
 
+    if (isset($_POST['password']) && $_POST['id'])
+    {
+        $id = $_POST['id'];
+        $password = MD5($_POST['password']);
+        $adminManager->editPassword($id, $password);
+    }
+
+    require('view/backend/editPasswordView.php');
+}
+
+function logout()
+{
+    unset($_SESSION['admin']);
+    header("location: index.php");
+
+}
 function addPost()
 {
 
