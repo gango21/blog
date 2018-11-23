@@ -38,6 +38,12 @@ if (isset($_GET['action'])) {
     elseif ($_GET['action'] == 'signaledComments') {
         signaledComments();
     }
+    elseif ($_GET['action'] == 'logout') {
+        logout();
+    }
+    elseif ($_GET['action'] == 'editPassword') {
+        editPassword();
+    }
 }
 else {
     listPosts();
