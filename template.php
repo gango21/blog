@@ -7,7 +7,20 @@
     </head>
     <header>
         <a href="index.php?action=listPosts">Liste des billets</a>
+        <?php
+            if (!isset($_SESSION['admin'])){
+        ?>
         <a href="index.php?action=admin">Admin</a>
+            <?php
+        }
+            ?>
+        <?php
+            if (isset($_SESSION['admin'])){
+                ?>
+        <a href="index.php?action=logout">Déconnexion</a>
+        <?php
+            }
+        ?>
     </header>
     <body>
         <?= $content ?>
