@@ -47,7 +47,7 @@ function admin()
     $adminManager = new Adminmanager($db);
     $admin = $adminManager->connectAdmin();
 
-    if (!isset($_POST['user']) OR !isset($_POST['password']) OR ($_POST['user'] != $admin['user'] OR MD5($_POST[('password')]) != $admin['password'])){
+    if (!isset($_POST['user']) OR !isset($_POST['password']) OR ($_POST['user'] != $admin['user'] OR !password_verify($_POST['password'],$admin['password']))){
     }
     else{
         $_SESSION['admin']=$_POST['user'];
@@ -66,7 +66,7 @@ function editPassword()
     if (isset($_POST['password']) && $_POST['id'])
     {
         $id = $_POST['id'];
-        $password = MD5($_POST['password']);
+        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
         $adminManager->editPassword($id, $password);
     }
 
