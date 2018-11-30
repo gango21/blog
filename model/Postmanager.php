@@ -14,18 +14,23 @@ class PostManager
     }
 
     //Récupérer données de la table posts
-    public function getPosts()
+    public function getPosts($pagenumber)
     {
 
         $posts=[];
 
-        $q = $this->_db->query('SELECT id, title, content, date_creation FROM posts');
+        $pagenumber = $pagenumber*5;
+        echo $pagenumber;
+        $querry = 'SELECT id, title, content, date_creation FROM posts ORDER BY date_creation DESC LIMIT '.$pagenumber.', 5;';
+        echo $querry;
+        $q = $this->_db->query('SELECT id, title, content, date_creation FROM posts ORDER BY date_creation DESC LIMIT '.$pagenumber.', 5;');
 
         while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
         {
             $posts[] = new Post($donnees);
         }
         return $posts;
+
     }
 
 
@@ -43,9 +48,19 @@ class PostManager
     // Ajouter un post
     public function addPost($title, $content)
     {
-        $date = date("Y-m-d H:i:s");
+            $date = date("Y-m-d H:i:s");
+            $donnees = [$title, $content, $date];
+
+            $post = new Post($donnees);
+
+            $q = $this->_db->prepare('INSERT INTO posts(title, content, date_creation) VALUES(?, ?, ?)');
+            $q->execute(array($title, $content, $date));
+
+
+       /* $date = date("Y-m-d H:i:s");
         $q = $this->_db->prepare('INSERT INTO posts(title, content, date_creation) VALUES(?, ?, ?)');
-        $q->execute(array($title, $content, $date));
+        $q->execute(array($title, $content, $date)); */
+
     }
 
     // Editer un post
