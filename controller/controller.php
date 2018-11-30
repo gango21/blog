@@ -6,11 +6,12 @@ require('model/Adminmanager.php');
 
 //frontend
 
-function listPosts()
+function listPosts($page)
 {
     $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
     $postManager = new PostManager($db);
-    $posts = $postManager->getPosts();
+    $pagenumber = $page-1;
+    $posts = $postManager->getPosts($pagenumber);
 
     require('view/frontend/indexView.php');
 }
