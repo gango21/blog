@@ -3,7 +3,8 @@ require('controller/controller.php');
 
 if (isset($_GET['action'])) {
     if ($_GET['action'] == 'listPosts') {
-        listPosts();
+        $page = $_GET['page'];
+        listPosts($page);
     }
     elseif ($_GET['action'] == 'post') {
         if (isset($_GET['postId']) && $_GET['postId'] > 0) {
@@ -46,7 +47,7 @@ if (isset($_GET['action'])) {
     }
 }
 else {
-    listPosts();
+    listPosts(1);
 }
 
 ?>
