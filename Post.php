@@ -27,6 +27,7 @@ class Post
     public function content(){return $this->_content;}
     public function date_creation(){return $this->_date_creation;}
 
+
     //Liste des setters
 
     public function setId($id)
