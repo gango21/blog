@@ -20,9 +20,7 @@ class PostManager
         $posts=[];
 
         $pagenumber = $pagenumber*5;
-        echo $pagenumber;
-        $querry = 'SELECT id, title, content, date_creation FROM posts ORDER BY date_creation DESC LIMIT '.$pagenumber.', 5;';
-        echo $querry;
+        $querry = 'SELECT id, title, content, convert(varchar, date_creation, 103) AS date_creation_fr FROM posts ORDER BY date_creation DESC LIMIT '.$pagenumber.', 5;';
         $q = $this->_db->query('SELECT id, title, content, date_creation FROM posts ORDER BY date_creation DESC LIMIT '.$pagenumber.', 5;');
 
         while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
