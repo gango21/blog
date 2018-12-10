@@ -9,7 +9,7 @@
     <header>
         <ul>
             <li>
-                <a href="index.php?action=listPosts">Liste des billets</a>
+                <a href="index.php?action=listPosts&page=1">Liste des billets</a>
             </li>
             <li>
                 <a href="index.php?action=admin">Admin</a>
