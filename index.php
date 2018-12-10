@@ -22,7 +22,6 @@ if (isset($_GET['action'])) {
             addPost();
         }
     elseif ($_GET['action'] == 'editPost') {
-        echo $_SESSION['admin'];
         editPost();
     }
     elseif ($_GET['action'] == 'editPostForm') {
