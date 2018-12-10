@@ -2,9 +2,19 @@ body
 {
     font-family: "helvetica";
     background-color: #e1e1e1;
+    position: relative;
+    margin: 0;
+    padding: 0;
 }
 
 /*header navbar */
+
+header
+{
+    top: 0;
+    width: 100%;
+
+}
 
 header ul
 {
@@ -32,7 +42,7 @@ li a:hover {
     background-color: #111;
 }
 
-/*comment_container*/
+/*post_container*/
 
 .post_container
 {
@@ -64,24 +74,30 @@ li a:hover {
     background-color: white;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     border-bottom: 1px solid #6a6a6a;
 }
 
-.post_container h3
+.post_container .title
 {
     margin: auto;
+    margin-left:20px;
     padding-left: 20px;
     padding-top:10px;
+    padding-bottom:10px;
     display: block;
+    width: 80%;
 }
 
 .post_container .date_creation
 {
     margin: auto;
+    margin-left:20px;
     padding-left: 20px;
-    padding-top: 10px;
+    padding-top:10px;
+    padding-bottom:10px;
     display: block;
+    width: 20%;
 }
 
 .post_container .far
@@ -92,9 +108,110 @@ li a:hover {
 .post_container .content
 {
     margin: auto;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top:10px;
+    display: block;
+}
+
+.post_container .comment
+{
+    margin: auto;
     padding-left: 20px;
     padding-top:10px;
     display: block;
+    margin-left: 20px;
+    padding-bottom:10px;
+}
+
+/* navigation */
+
+.page_navigation
+{
+    margin: auto;
+}
+
+.page_navigation a
+{
+    justify-content: space-around;
+}
+
+/*comment*/
+.comments
+{
+    width:70%;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+.comments .comments_header
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color:#b3e5fc;
+}
+
+.comments_header .author
+{
+    width: 80%;
+    margin:auto;
+}
+
+.comments_header .date
+{
+    width: 20%;
+    margin:auto;
+}
+
+.comments_content
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #e1f5fe;
+}
+
+.comments_content p
+{
+    margin: auto;
+    margin-left: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: block;
+    width: 90%;
+}
+
+.comments_content form
+{
+    width:10%;
+}
+
+.comments_content input[type="submit"]
+{
+    text-decoration: none;
+    cursor: pointer;
+    border:none;
+    background-color:#ef9a9a;
+}
+
+/*comment form*/
+
+.comment_form
+{
+    padding-top: 10px;
+    width:70%;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.comment_form textarea
+{
+    width: 100%;
 }
 
 h3
@@ -107,10 +224,13 @@ margin-bottom:0px;
 {
 margin-top:0px;
 }
+
 .news
 {
-width:70%;
-margin:auto;
+    width:70%;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
 }
 
 a
@@ -119,14 +239,4 @@ text-decoration: none;
 color: blue;
 }
 
-.comments p
-{
-    background-color:#CCCCCC;
-    margin-top:0px;
-}
 
-.comments
-{
-    width:70%;
-    margin:auto;
-}
