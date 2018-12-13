@@ -7,14 +7,14 @@
                 for ($i=0; $i<count($posts); $i++){?>
                    <div class="post_container">
                       <div class="header">
-                          <div class="title"><i class="far fa-file-alt"></i><?php echo $posts[$i]->title();?></div>
-                          <div class="date_creation"><i class="far fa-calendar-alt"></i><?php echo date("d-m-Y H:i",strtotime($posts[$i]->date_creation()))?><?php ?></div>
+                          <div class="title"><span><i class="far fa-file-alt"></i><?php echo $posts[$i]->title();?></span></div>
+                          <div class="date_creation"><span><i class="far fa-calendar-alt"></i><?php echo date("d-m-Y H:i",strtotime($posts[$i]->date_creation()))?><?php ?></span></div>
                       </div>
                        <div class="content">
                     <p><?php echo $posts[$i]->content();?></p>
                        </div>
                        <div class="comment">
-                       <a href="index.php?action=post&postId=<?php echo $posts[$i]->id(); ?>"><i class="far fa-comment"></i>Commentaires</a>
+                           <a href="index.php?action=post&postId=<?php echo $posts[$i]->id(); ?>"><i class="far fa-comment"></i><?php echo $commentManager->countComments($posts[$i]->id()); ?> commentaire(s)</a>
                        </div>
                     </div>
                 <?php
