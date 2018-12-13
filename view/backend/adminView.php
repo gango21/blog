@@ -8,15 +8,18 @@
     {
 
     ?>
-    <h1>Admin</h1>
+      <div class="admin_page">
+       <div class="admin">
         <p>Entrez votre nom d'utilisateur et votre mot de passe</p>
         <form action="index.php?action=admin" method="post">
             <p>
-            Nom d'utilisateur : <input type="text" name="user" /><br>
-            Mot de passe : <input type="password" name="password" /><br>
-            <input type="submit" value="Valider" />
+            <input type="text" name="user" value="user" class="form"/><br>
+            <input type="password" name="password" value="password" class="form"/><br>
+            <input type="submit" value="LOGIN" />
             </p>
         </form>
+    </div>
+    </div>
     <?php
 
     }
