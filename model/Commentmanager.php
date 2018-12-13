@@ -15,7 +15,7 @@ class CommentManager
 
     public function getComments($id)
     {
-        $q = $this->_db->query('SELECT id, id_post, author, content_comment, date_comment, signal_comment FROM comments WHERE id_post = '.$id);
+        $q = $this->_db->query('SELECT id, id_post, author, content_comment, date_comment, signal_comment FROM comments WHERE id_post = "'.$id.'" ORDER BY date_comment ASC');
 
         $comments = [];
 
@@ -24,6 +24,13 @@ class CommentManager
             $comments[] = new Comment($donnees);
         }
         return $comments;
+    }
+
+    public function countComments($id)
+    {
+        $q = $this->_db->query('SELECT COUNT(*)S FROM comments WHERE id_post = '.$id);
+        $count = $q->fetch();
+        return $count[0];
     }
 
     public function addComment($postId, $author, $content_comment)
