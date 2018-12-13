@@ -49,7 +49,7 @@ li a:hover {
     background-color: white;
     border-radius: 4px;
     box-shadow: 0px 5px 5px -4px rgba(0,0,0,0.75);
-    margin: 10px;
+    margin-top: 10px;
     position:relative;
 }
 
@@ -86,8 +86,20 @@ li a:hover {
     padding-top:10px;
     padding-bottom:10px;
     display: block;
-    width: 80%;
+    width: 70%;
 }
+
+/*.post_container .title span
+{
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    padding:3px;
+    padding-left:10px;
+    padding-right:10px;
+    box-shadow: inset -1px -1px black;
+}*/
 
 .post_container .date_creation
 {
@@ -97,8 +109,20 @@ li a:hover {
     padding-top:10px;
     padding-bottom:10px;
     display: block;
-    width: 20%;
+    width: 30%;
 }
+
+/*.post_container .date_creation span
+{
+    border-color: black;
+    border-width: 0px;
+    border-style: solid;
+    border-radius: 20px;
+    padding:3px;
+    padding-left:10px;
+    padding-right:10px;
+    box-shadow: inset -1px -1px blue;
+}*/
 
 .post_container .far
 {
@@ -146,6 +170,26 @@ li a:hover {
     padding-top: 10px;
 }
 
+.comments .comments_head
+{
+    background-color: #526BAD;
+    color: white;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius:4px 4px 0px 0px;
+    border-bottom: 3px solid #b3e5fc;
+}
+
+.comments .comments_head span .fa
+{
+    padding-right: 10px;
+}
+
+.comments .comments_head span
+{
+    margin-left: 20px;
+    padding-left: 20px;
+}
 .comments .comments_header
 {
     display: flex;
@@ -156,14 +200,22 @@ li a:hover {
 
 .comments_header .author
 {
-    width: 80%;
+    width: 70%;
     margin:auto;
+    margin-left: 20px;
+    padding-left: 20px;
 }
 
 .comments_header .date
 {
-    width: 20%;
+    width: 30%;
     margin:auto;
+    margin-left: 20px;
+    padding-left: 20px;
+}
+
+.comments .far {
+    padding-right: 10px;
 }
 
 .comments_content
@@ -172,6 +224,7 @@ li a:hover {
     flex-direction: row;
     justify-content: space-around;
     background-color: #e1f5fe;
+    position: relative;
 }
 
 .comments_content p
@@ -187,7 +240,9 @@ li a:hover {
 
 .comments_content form
 {
-    width:10%;
+    position: absolute;
+    bottom:0px;
+    right:0px;
 }
 
 .comments_content input[type="submit"]
@@ -195,10 +250,23 @@ li a:hover {
     text-decoration: none;
     cursor: pointer;
     border:none;
+    background-color: #e1f5fe;
+}
+
+.comments_content input[type="submit"]:hover
+{
     background-color:#ef9a9a;
 }
 
+
 /*comment form*/
+.comment_form input
+{
+    border-radius : 4px 4px 4px 4px;
+    border-style:solid;
+    border-color:black;
+    border-width: 1px;
+}
 
 .comment_form
 {
@@ -212,6 +280,71 @@ li a:hover {
 .comment_form textarea
 {
     width: 100%;
+    border-radius : 4px 4px 4px 4px;
+    border-style:solid;
+    border-color:black;
+    border-width: 1px;
+    height:80px;
+}
+
+/* admin */
+
+.admin_page
+{
+    width:30%;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+}
+.admin
+{
+    width:100%;
+    margin-top:10px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0px 5px 5px -4px rgba(0,0,0,0.75);
+    display:flex;
+    flex-direction: column;
+}
+
+.admin p
+{
+    text-align: center;
+}
+
+
+.admin .form
+{
+    width: 70%;
+    margin: 10px;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:0px;
+    padding-right:0px;
+    border-width: 1px;
+    border-style: solid;
+    text-align: center;
+    background-color: #f2f2f2;
+    border-color:#f2f2f2;
+    font-size: 16px;
+    color:grey;
+}
+
+[value="LOGIN"]
+{
+    background-color: #4CAF50;
+    border-width: 1px;
+    border-color: #4CAF50;
+    border-style: solid;
+    color: white;
+    padding: 0px;
+    margin-top:10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 70%;
+    height:40px;
 }
 
 h3
