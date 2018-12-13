@@ -12,6 +12,7 @@ function listPosts($page)
     $postManager = new PostManager($db);
     $pagenumber = $page-1;
     $posts = $postManager->getPosts($pagenumber);
+    $commentManager = new CommentManager($db);
 
     require('view/frontend/indexView.php');
 }
@@ -153,7 +154,7 @@ function editPost()
     {
         $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
         $postmanager = new PostManager($db);
-        $posts = $postmanager->getPosts();
+        $posts = $postmanager->getPosts(1);
 
         if (isset($_POST['post_delete']))
         {
