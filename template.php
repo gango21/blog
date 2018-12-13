@@ -9,16 +9,17 @@
     <header>
         <ul>
             <li>
-                <a href="index.php?action=listPosts&page=1">Liste des billets</a>
+                <a href="index.php?action=listPosts&page=1"><i class="fas fa-home"></i> Liste des billets</a>
             </li>
             <li>
-                <a href="index.php?action=admin">Admin</a>
+
+                <a href="index.php?action=admin"><i class="far fa-user"></i> Admin</a>
             </li>
             <?php
             if (isset($_SESSION['admin'])){
             ?>
             <li>
-                <a href="index.php?action=logout">Déconnexion</a>
+                <a href="index.php?action=logout"><i class="fas fa-power-off"></i> Déconnexion</a>
             </li>
             <?php
                 }
