@@ -59,7 +59,7 @@
             <input type="hidden" name="id_post" value="<?php echo $post->id(); ?>">
             <input type="submit" value="Envoyer" />
         </form>
-            </div>
+        </div>
 
         <?php $content = ob_get_clean(); ?>
         <?php require('template.php'); ?>
