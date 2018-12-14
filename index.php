@@ -22,7 +22,8 @@ if (isset($_GET['action'])) {
             addPost();
         }
     elseif ($_GET['action'] == 'editPost') {
-        editPost();
+        $page = $_GET['page'];
+        editPost($page);
     }
     elseif ($_GET['action'] == 'editPostForm') {
         if (isset($_GET['id']) && $_GET['id'] > 0){
@@ -43,6 +44,9 @@ if (isset($_GET['action'])) {
     }
     elseif ($_GET['action'] == 'editPassword') {
         editPassword();
+    }
+    elseif ($_GET['action'] == 'globalView') {
+        globalView();
     }
 }
 else {
