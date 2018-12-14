@@ -99,6 +99,7 @@ function addPost()
             $titlepost = $_POST['titlepost'];
             $content = $_POST['content'];
             $postmanager->addPost($titlepost, $content);
+            header('Location: index.php');
         }
 
         require('view/backend/addpostView.php');
@@ -142,7 +143,7 @@ function deleteComment()
 
 
 
-function editPost()
+function editPost($page)
 {
     if(empty($_SESSION['admin']))
     {
@@ -153,16 +154,17 @@ function editPost()
     else
     {
         $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
-        $postmanager = new PostManager($db);
-        $posts = $postmanager->getPosts(1);
+        $postManager = new PostManager($db);
+        $pagenumber = $page-1;
+        $posts = $postManager->getPosts($pagenumber);
+        $commentManager = new CommentManager($db);
+        require('view/backend/editpostView.php');
 
         if (isset($_POST['post_delete']))
         {
             $id = $_POST['post_delete'];
             $postmanager->deletePost($id);
         }
-
-        require('view/backend/editpostView.php');
     }
 
 }
@@ -191,6 +193,7 @@ function editPostForm()
             $titlepost = $_POST['titlePostEdit'];
             $content = $_POST['contentPostEdit'];
             $postmanager->editPost($id, $titlepost, $content);
+            header('Location: index.php');
         }
 
         require('view/backend/editpostformView.php');
@@ -235,6 +238,22 @@ function signaledComments()
         require('view/frontend/postView.php');
     }
 
+}
+
+function globalView()
+{
+    $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
+    $postManager = new PostManager($db);
+    $posts = $postManager->getAllPosts();
+    $commentManager = new CommentManager($db);
+
+    if (isset($_POST['post_delete']))
+    {
+        $id = $_POST['post_delete'];
+        $postmanager->deletePost($id);
+    }
+
+    require('view/backend/globalView.php');
 }
 
 
