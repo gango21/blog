@@ -347,6 +347,92 @@ li a:hover {
     height:40px;
 }
 
+/* edition */
+
+.edit_page
+{
+    width:70%;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+}
+.edit
+{
+    width:100%;
+    margin-top:10px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0px 5px 5px -4px rgba(0,0,0,0.75);
+    display:flex;
+    flex-direction: column;
+}
+
+.edit p
+{
+    text-align: center;
+}
+
+[name="titlepost"], [name="titlePostEdit"]
+{
+    width: 40%;
+    margin: 10px;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:0px;
+    padding-right:0px;
+    border-width: 1px;
+    border-style: solid;
+    text-align: center;
+    background-color: #f2f2f2;
+    border-color:#f2f2f2;
+    font-size: 16px;
+    color:black;
+}
+
+[value="Envoyer"]
+{
+    background-color: #4CAF50;
+    border-width: 0px;
+    border-color: #4CAF50;
+    border-style: solid;
+    color: white;
+    padding: 0px;
+    margin-top:10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
+    height:40px;
+}
+
+/*global*/
+
+.global_page
+{
+    width:70%;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+}
+.global
+{
+    width:100%;
+    margin-top:10px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0px 5px 5px -4px rgba(0,0,0,0.75);
+    display:flex;
+    flex-direction: column;
+}
+
+.global p
+{
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
 h3
 {
 
