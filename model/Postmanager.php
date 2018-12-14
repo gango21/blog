@@ -30,6 +30,21 @@ class PostManager
 
     }
 
+    public function getAllPosts()
+    {
+
+        $posts=[];
+
+        $q = $this->_db->query('SELECT id, title, content, date_creation FROM posts ORDER BY date_creation DESC');
+
+        while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
+        {
+            $posts[] = new Post($donnees);
+        }
+        return $posts;
+
+    }
+
 
     //Récupèrer un post en particulier
     public function getPost($id)
