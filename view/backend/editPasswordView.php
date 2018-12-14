@@ -2,7 +2,6 @@
 <html>
     <?php $title="Changer de mot de passe"; ?>
     <?php ob_start(); ?>
-    <h1>Blog</h1>
 
     <body>
         <form method="post">
