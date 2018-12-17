@@ -64,6 +64,13 @@ class CommentManager
         return $signaledcomments;
     }
 
+    public function countSignaledComments($id)
+    {
+        $q = $this->_db->query('SELECT COUNT(*) FROM comments WHERE signal_comment = 1 AND id_post=' .$id);
+        $count = $q->fetch();
+        return $count[0];
+    }
+
     public function deleteComment($id)
     {
         $q = $this->_db->exec('DELETE FROM comments WHERE id=' .$id);
