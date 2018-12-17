@@ -245,7 +245,7 @@ li a:hover {
     right:0px;
 }
 
-.comments_content input[type="submit"]
+.comments_content input[value="Commentaire signalé"], input[value="!"]
 {
     text-decoration: none;
     cursor: pointer;
@@ -253,7 +253,7 @@ li a:hover {
     background-color: #e1f5fe;
 }
 
-.comments_content input[type="submit"]:hover
+.comments_content input[value="Commentaire signalé"]:hover,  input[value="!"]:hover
 {
     background-color:#ef9a9a;
 }
@@ -330,7 +330,7 @@ li a:hover {
     color:grey;
 }
 
-[value="LOGIN"]
+[   value="LOGIN"]
 {
     background-color: #4CAF50;
     border-width: 1px;
@@ -458,4 +458,9 @@ text-decoration: none;
 color: blue;
 }
 
+/* mobile */
 
+@media (max-width: 640px)
+{
+
+}
