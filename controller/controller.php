@@ -158,13 +158,15 @@ function editPost($page)
         $pagenumber = $page-1;
         $posts = $postManager->getPosts($pagenumber);
         $commentManager = new CommentManager($db);
-        require('view/backend/editpostView.php');
+
 
         if (isset($_POST['post_delete']))
         {
             $id = $_POST['post_delete'];
-            $postmanager->deletePost($id);
+            $postManager->deletePost($id);
         }
+
+        require('view/backend/editpostView.php');
     }
 
 }
@@ -212,7 +214,6 @@ function signaledComments()
 
     else
     {
-        require('Commentmanager.php');
 
         $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
         $postManager = new PostManager($db);
@@ -250,7 +251,7 @@ function globalView()
     if (isset($_POST['post_delete']))
     {
         $id = $_POST['post_delete'];
-        $postmanager->deletePost($id);
+        $postManager->deletePost($id);
     }
 
     require('view/backend/globalView.php');
