@@ -164,6 +164,7 @@ function editPost($page)
         {
             $id = $_POST['post_delete'];
             $postManager->deletePost($id);
+            header("Refresh:0");
         }
 
         require('view/backend/editpostView.php');
@@ -243,6 +244,13 @@ function signaledComments()
 
 function globalView()
 {
+    if(empty($_SESSION['admin']))
+    {
+        header('Location: index.php');
+        exit();
+    }
+
+    else{
     $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
     $postManager = new PostManager($db);
     $posts = $postManager->getAllPosts();
@@ -252,6 +260,8 @@ function globalView()
     {
         $id = $_POST['post_delete'];
         $postManager->deletePost($id);
+        header("Refresh:0");
+    }
     }
 
     require('view/backend/globalView.php');
