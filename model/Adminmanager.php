@@ -19,7 +19,6 @@ class AdminManager
     public function connectAdmin()
     {
         $q = $this->_db->query('SELECT id, user, password FROM admin');
-
         $admin = $q->fetch(PDO::FETCH_ASSOC);
         return $admin;
     }
