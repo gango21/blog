@@ -1,44 +1,58 @@
 <!DOCTYPE html>
 <html>
-    <?php $title="Admin"; ?>
-    <?php ob_start();
+<?php $title="Admin"; ?>
+<?php ob_start();
 
-    // Le mot de passe n'a pas été envoyé ou n'est pas bon
-    if (!isset($_SESSION['admin']))
+    if (!isset($_SESSION['admin']) && ($login_error=false))
     {
 
     ?>
-    <div class="admin_page">
-       <div class="admin">
-            <p>Entrez votre nom d'utilisateur et votre mot de passe</p>
-            <form action="index.php?action=admin" method="post">
-                <p>
-                <input type="text" name="user" value="user" class="form"/><br>
-                <input type="password" name="password" value="password" class="form"/><br>
+<div class="admin_page">
+    <div class="admin">
+        <p>Entrez votre nom d'utilisateur et votre mot de passe</p>
+        <form action="index.php?action=admin" method="post">
+            <p>
+                <input type="text" name="user" value="user" class="form" /><br>
+                <input type="password" name="password" value="password" class="form" /><br>
                 <input type="submit" value="LOGIN" />
-                </p>
-            </form>
-        </div>
+            </p>
+        </form>
     </div>
-    <?php
+</div>
+<?php
 
+    }
+    else if (!isset($_SESSION['admin']) && ($login_error=true)){ ?>
+<div class="admin_page">
+    <div class="admin">
+        <p>Entrez votre nom d'utilisateur et votre mot de passe</p>
+        <form action="index.php?action=admin" method="post">
+            <p>
+                <input type="text" name="user" value="user" class="form" /><br>
+                <input type="password" name="password" value="password" class="form" /><br>
+                <input type="submit" value="LOGIN" />
+            </p>
+        </form>
+    </div>
+</div>
+<?php
     }
     else
     {
     ?>
-    <div class="admin_page">
-        <div class="admin">
+<div class="admin_page">
+    <div class="admin">
         <p><a href="index.php?action=globalView">Vue d'ensemble</a></p>
         <p><a href="index.php?action=addPost">Ajouter un billet</a></p>
         <p><a href="index.php?action=editPost&page=1">Modifier un billet</a></p>
         <p><a href="index.php?action=deleteComment">Modérer les commentaires</a></p>
         <p><a href="index.php?action=editPassword">Modifier le mot de passe</a></p>
-        </div>
     </div>
-    <?php
+</div>
+<?php
     }
     $content = ob_get_clean();
-    require('template.php');
+    require('view/template.php');
     ?>
 
 </html>
