@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <?php $title="Ajouter un post"; ?>
-    <?php ob_start(); ?>
+<?php $title="Ajouter un post"; ?>
+<?php ob_start(); ?>
 
-    <script src='https://devpreview.tiny.cloud/demo/tinymce.min.js'></script>
-    <script>
-        tinymce.init({
+<script src='https://devpreview.tiny.cloud/demo/tinymce.min.js'></script>
+<script>
+    tinymce.init({
             selector: '#mytextarea'
         });
     </script>
 
-    <body>
-        <div class="edit_page">
-            <div class="edit">
-                <form method="post" action="">
-                    <input type="text" name="titlepost" value="Titre du Post"><br>
-                    <textarea id="mytextarea" name="content">Hello, World!</textarea>
-                    <input type="submit"  value="Envoyer">
-                </form>
-            </div>
+<body>
+    <div class="edit_page">
+        <div class="edit">
+            <form method="post" action="">
+                <input type="text" name="titlepost" value="Titre du Post"><br>
+                <textarea id="mytextarea" name="content">Hello, World!</textarea>
+                <input type="submit" value="Envoyer">
+            </form>
         </div>
-    </body>
+    </div>
+</body>
 
-    <?php $content = ob_get_clean(); ?>
-    <?php require('template.php'); ?>
+<?php $content = ob_get_clean(); ?>
+<?php require('view/template.php'); ?>
+
 </html>
