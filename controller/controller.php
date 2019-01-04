@@ -49,9 +49,11 @@ function admin()
     $adminManager = new Adminmanager($db);
     $admin = $adminManager->connectAdmin();
 
-    if (!isset($_POST['user']) OR !isset($_POST['password']) OR ($_POST['user'] != $admin['user'] OR !password_verify($_POST['password'],$admin['password']))){
+    if (!isset($_POST['user']) OR !isset($_POST['password']) OR ($_POST['user'] != $admin['user'] OR !password_verify($_POST['password'],$admin['password'])))
+    {
+
     }
-    else{
+    else if ($_POST['user'] = $admin['user'] && password_verify($_POST['password'],$admin['password'])){
         $_SESSION['admin']=$_POST['user'];
     }
     require('view/backend/adminView.php');
