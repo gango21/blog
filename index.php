@@ -2,9 +2,16 @@
 require('controller/controller.php');
 
 if (isset($_GET['action'])) {
+
+    //frontend
     if ($_GET['action'] == 'listPosts') {
         $page = $_GET['page'];
-        listPosts($page);
+        if ($page>0){
+            listPosts($page);
+        }
+        else {
+            listPosts(1);
+        }
     }
     elseif ($_GET['action'] == 'post') {
         if (isset($_GET['postId']) && $_GET['postId'] > 0) {
@@ -14,10 +21,11 @@ if (isset($_GET['action'])) {
             echo 'Erreur : aucun identifiant de billet envoyé';
         }
     }
+
+    //backend
     elseif ($_GET['action'] == 'admin') {
         admin();
     }
-    //admin
     elseif ($_GET['action'] == 'addPost') {
             addPost();
         }
