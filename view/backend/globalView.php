@@ -28,7 +28,7 @@
                 <td><a href="index.php?action=post&postId=<?php echo $posts[$i]->id(); ?>"><?php echo $posts[$i]->title();?></a></td>
                 <td><?php echo substr($posts[$i]->content(),0,30)."...";?></td>
                 <td><a href="index.php?action=editPostForm&id=<?php echo $posts[$i]->id();?>"> <i class="fas fa-pencil-alt"></i></a></td>
-                <td><form method="post">
+                <td><form method="post" action="">
                     <input type="hidden" name="post_delete" value="<?php echo $posts[$i]->id(); ?>">
                     <input type="submit" value="Supprimer" type="hidden">
                     </form>
@@ -44,7 +44,7 @@
 
 <?php
 $content = ob_get_clean();
-require('template.php');
+require('view/template.php');
 ?>
 
 </html>
