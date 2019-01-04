@@ -4,8 +4,6 @@ require ("Comment.php");
 
 class CommentManager
 {
-    //Connexion à la base de données
-
     private $_db;
 
     public function __construct($db)
