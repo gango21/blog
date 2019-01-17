@@ -202,11 +202,9 @@ li a:hover {
     width: 90%;
 }
 
-.comments_content form
+.comments_content form input[value="Supprimer"], input[value="Ignorer"]
 {
-    position: absolute;
-    bottom:0px;
-    right:0px;
+    margin: 10px;
 }
 
 .comments_content input[value="Commentaire signalé"], input[value="!"]
@@ -215,6 +213,9 @@ li a:hover {
     cursor: pointer;
     border:none;
     background-color: #e1f5fe;
+    position: absolute;
+    bottom:0px;
+    right:0px;
 }
 
 .comments_content input[value="Commentaire signalé"]:hover,  input[value="!"]:hover
