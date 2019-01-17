@@ -29,9 +29,9 @@
                                           }
             ?>
         <div class="page_navigation">
-            <a href="index.php?action=listPosts&page=<?php echo $page-1 ?>"><i class="fas fa-caret-left"></i></a>
+            <a href="index.php?action=editPost&page=<?php echo $page-1 ?>"><i class="fas fa-caret-left"></i></a>
             <?php echo $page ?>
-            <a href="index.php?action=listPosts&page=<?php echo $page+1 ?>"><i class="fas fa-caret-right"></i></a>
+            <a href="index.php?action=editPost&page=<?php echo $page+1 ?>"><i class="fas fa-caret-right"></i></a>
         </div>
 
     </div>
