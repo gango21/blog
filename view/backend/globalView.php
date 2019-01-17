@@ -33,7 +33,7 @@
                     <input type="submit" value="Supprimer" type="hidden">
                     </form>
                 <td><a href="index.php?action=post&postId=<?php echo $posts[$i]->id(); ?>"><?php echo $commentManager->countComments($posts[$i]->id()); ?> <i class="fa fa-comment"></i></a></td>
-                <td><a href="http://localhost/blog-gitrepo/index.php?action=deleteComment"><?php echo $commentManager->countSignaledComments($posts[$i]->id()); ?> <i class="fas fa-exclamation-triangle"></i></a></td>
+                <td><a href="index.php?action=deleteComment"><?php echo $commentManager->countSignaledComments($posts[$i]->id()); ?> <i class="fas fa-exclamation-triangle"></i></a></td>
             </tr>
             <?php } ?>
         </table>
