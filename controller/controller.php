@@ -8,18 +8,17 @@ require('model/Adminmanager.php');
 
 function listPosts($page)
 {
-    $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
+    require('ConnectDb.php');
     $postManager = new PostManager($db);
     $pagenumber = $page-1;
     $posts = $postManager->getPosts($pagenumber);
     $commentManager = new CommentManager($db);
-
     require('view/frontend/indexView.php');
 }
 
 function post()
 {
-    $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
+    require('ConnectDb.php');
     $postManager = new PostManager($db);
     $post = $postManager->getPost($_GET['postId']);
     $commentManager = new CommentManager($db);
@@ -45,7 +44,7 @@ function post()
 
 function admin()
 {
-    $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
+    require('ConnectDb.php');
     $adminManager = new Adminmanager($db);
     $admin = $adminManager->connectAdmin();
 
@@ -63,15 +62,25 @@ function admin()
 
 function editPassword()
 {
-    $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
-    $adminManager = new Adminmanager($db);
-    $admin = $adminManager->connectAdmin();
 
-    if (isset($_POST['password']) && $_POST['id'])
+    if(empty($_SESSION['admin']))
     {
-        $id = $_POST['id'];
-        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-        $adminManager->editPassword($id, $password);
+        header('Location: index.php');
+        exit();
+    }
+
+    else
+    {
+        require('ConnectDb.php');
+        $adminManager = new Adminmanager($db);
+        $admin = $adminManager->connectAdmin();
+
+        if (isset($_POST['password']) && $_POST['id'])
+        {
+            $id = $_POST['id'];
+            $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+            $adminManager->editPassword($id, $password);
+        }
     }
 
     require('view/backend/editPasswordView.php');
@@ -93,7 +102,7 @@ function addPost()
     }
 
     else{
-        $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
+        require('ConnectDb.php');
         $postmanager = new PostManager($db);
 
         if (isset($_POST['titlepost']) && $_POST['content'])
@@ -120,7 +129,7 @@ function deleteComment()
 
     else
     {
-        $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
+        require('ConnectDb.php');
         $commentManager = new CommentManager($db);
 
         if (isset($_POST['id_delete']))
@@ -155,7 +164,7 @@ function editPost($page)
 
     else
     {
-        $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
+        require('ConnectDb.php');
         $postManager = new PostManager($db);
         $pagenumber = $page-1;
         $posts = $postManager->getPosts($pagenumber);
@@ -166,6 +175,7 @@ function editPost($page)
         {
             $id = $_POST['post_delete'];
             $postManager->deletePost($id);
+            $commentManager->deletePostComments($id);
             header("Refresh:0");
         }
 
@@ -183,7 +193,7 @@ function editPostForm()
     }
     else
     {
-        $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
+        require('ConnectDb.php');
         $postmanager = new PostManager($db);
 
         if (isset($_GET['id']))
@@ -218,7 +228,7 @@ function signaledComments()
     else
     {
 
-        $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
+        require('ConnectDb.php');
         $postManager = new PostManager($db);
         $post = $postManager->getPost($_GET['postId']);
         $commentManager = new CommentManager($db);
@@ -253,7 +263,7 @@ function globalView()
     }
 
     else{
-    $db = new PDO('mysql:host=localhost;dbname=test', 'root', '');
+    require('ConnectDb.php');
     $postManager = new PostManager($db);
     $posts = $postManager->getAllPosts();
     $commentManager = new CommentManager($db);
@@ -262,6 +272,7 @@ function globalView()
     {
         $id = $_POST['post_delete'];
         $postManager->deletePost($id);
+        $commentManager->deletePostComments($id);
         header("Refresh:0");
     }
     }
