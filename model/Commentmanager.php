@@ -74,6 +74,11 @@ class CommentManager
         $q = $this->_db->exec('DELETE FROM comments WHERE id=' .$id);
     }
 
+    public function deletePostComments($id)
+    {
+        $q = $this->_db->exec('DELETE FROM comments WHERE id_post=' .$id);
+    }
+
     public function setDb(PDO $db)
     {
         $this->_db = $db;
