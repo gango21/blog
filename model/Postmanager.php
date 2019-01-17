@@ -46,8 +46,6 @@ class PostManager
     public function addPost($title, $content)
     {
         $date = date("Y-m-d H:i:s");
-        $donnees = [$title, $content, $date];
-        $post = new Post($donnees);
         $q = $this->_db->prepare('INSERT INTO posts(title, content, date_creation) VALUES(?, ?, ?)');
         $q->execute(array($title, $content, $date));
     }
@@ -62,6 +60,7 @@ class PostManager
     public function deletePost($id)
     {
         $q = $this->_db->exec('DELETE FROM posts WHERE id=' .$id);
+
     }
 
     public function setDb(PDO $db)
