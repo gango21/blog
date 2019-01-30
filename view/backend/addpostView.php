@@ -6,7 +6,8 @@
 <script src='https://devpreview.tiny.cloud/demo/tinymce.min.js'></script>
 <script>
     tinymce.init({
-            selector: '#mytextarea'
+            selector: '#mytextarea',
+            height: "400px"
         });
     </script>
 
