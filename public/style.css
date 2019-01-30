@@ -7,7 +7,125 @@ body
     background-color: lightblue;
 }
 
-/*header navbar */
+/* test nav */
+
+header
+{
+    height:100px;
+}
+nav{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height: 80px;
+    padding: 10px 100px;
+    background-color: #333;
+    box-sizing: border-box;
+    transition: .5s;
+    z-index:3;
+}
+
+nav.black
+{
+    background-color: #333;
+    height:40px;
+    padding: 10px 50px;
+}
+
+nav .logo{
+    float: left;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;}
+
+nav .logo li
+{
+    list-style: none;
+}
+
+nav .logo img{
+    height: 80px;
+    transition: .5s;
+}
+
+nav.black .logo img
+{
+    height:60px;
+}
+
+nav ul {
+    float: right;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+nav ul li{
+    list-style: none;
+}
+
+nav ul li a {
+    line-height: 60px;
+    color: white;
+    padding: 5px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: .5s;
+}
+
+nav.black ul li a {
+    line-height: 10px;
+    color: white;
+    padding: 5px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: .5s;
+}
+
+nav ul li a.active,
+nav ul li a:hover{
+    color: #fff;
+    background:#f00;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    color: #fff;
+    background:#f00;
+    transition: .5s;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+/*header navbar
 
 header
 {
@@ -40,6 +158,8 @@ header ul li a {
 li a:hover {
     background-color: #111;
 }
+
+*/
 
 /*post_container*/
 
@@ -408,6 +528,49 @@ li a:hover {
     padding: 0;
 }
 
+.tg
+{
+    border-collapse:collapse;
+    margin:5px;
+}
+
+
+.tg tr:hover
+{
+    background-color: #cce6ff;
+}
+
+.tg td
+{
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    text-align: center;
+    vertical-align: middle;
+    padding:10px 5px;
+    border-style:solid;
+    border-width:1px;
+    overflow:hidden;
+    word-break:normal;
+    border:none;
+}
+
+.tg th
+{
+    font-family:Arial, sans-serif;
+    font-size:14px;
+    font-weight:normal;
+    padding:10px 5px;
+    border-style:solid;
+    border-width:1px;
+    overflow:hidden;
+    word-break:normal;}
+
+.tg .tg-0lax
+{
+    text-align:left;
+    vertical-align:top;
+}
+
 h3
 {
 
@@ -422,6 +585,7 @@ margin-top:0px;
 .news
 {
     width:70%;
+    margin-top:30px;
     margin:auto;
     display: flex;
     flex-direction: column;
@@ -496,5 +660,58 @@ color: blue;
         display: flex;
         flex-direction: column;
     }
+    .global_page
+    {
+        width:95%;
+    }
+    .tg td
+    {
+        font-size:10px;
+    }
 
+    header
+    {
+        height:40px;
+    }
+
+    nav{
+        background-color: #333;
+        height:40px;
+        padding: 10px 50px;
+    }
+    nav.black
+    {
+        background-color: #333;
+        height:40px;
+        padding: 10px 50px;
+    }
+    nav ul li a {
+        line-height: 10px;
+        color: white;
+        padding: 5px 20px;
+        text-decoration: none;
+        font-size: 12px;
+        text-transform: uppercase;
+        transition: .5s;
+    }
+
+    nav.black ul li a {
+        line-height: 10px;
+        color: white;
+        padding: 5px 20px;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: .5s;
+    }
+
+    .home
+    {
+        display:none;
+    }
+
+    .dropdown:hover .dropdown-content {display: none;}
+
+    .edit_page{
+        width: 90%;
+    }
 }
