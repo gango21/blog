@@ -175,7 +175,6 @@ function editPost($page)
         {
             $id = $_POST['post_delete'];
             $postManager->deletePost($id);
-            $commentManager->deletePostComments($id);
             header("Refresh:0");
         }
 
@@ -272,7 +271,6 @@ function globalView()
     {
         $id = $_POST['post_delete'];
         $postManager->deletePost($id);
-        $commentManager->deletePostComments($id);
         header("Refresh:0");
     }
     }
