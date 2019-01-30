@@ -60,6 +60,9 @@ class PostManager
     public function deletePost($id)
     {
         $q = $this->_db->exec('DELETE FROM posts WHERE id=' .$id);
+        require('controller/ConnectDb.php');
+        $commentManager = new CommentManager($db);
+        $commentManager->deletePostComments($id);
 
     }
 
