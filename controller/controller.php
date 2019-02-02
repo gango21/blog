@@ -1,8 +1,8 @@
 <?php
 session_start();
-require('model/Postmanager.php');
-require('model/Commentmanager.php');
-require('model/Adminmanager.php');
+require('model/PostManager.php');
+require('model/CommentManager.php');
+require('model/AdminManager.php');
 
 //frontend
 
@@ -45,12 +45,11 @@ function post()
 function admin()
 {
     require('ConnectDb.php');
-    $adminManager = new Adminmanager($db);
+    $adminManager = new AdminManager($db);
     $admin = $adminManager->connectAdmin();
 
     if (!isset($_POST['user']) OR !isset($_POST['password']) OR ($_POST['user'] != $admin['user'] OR !password_verify($_POST['password'],$admin['password'])))
     {
-
     }
     else if ($_POST['user'] = $admin['user'] && password_verify($_POST['password'],$admin['password'])){
         $_SESSION['admin']=$_POST['user'];
@@ -72,7 +71,7 @@ function editPassword()
     else
     {
         require('ConnectDb.php');
-        $adminManager = new Adminmanager($db);
+        $adminManager = new AdminManager($db);
         $admin = $adminManager->connectAdmin();
 
         if (isset($_POST['password']) && $_POST['id'])
@@ -113,7 +112,7 @@ function addPost()
             header('Location: index.php');
         }
 
-        require('view/backend/addpostView.php');
+        require('view/backend/addPostView.php');
     }
 
 
@@ -147,7 +146,7 @@ function deleteComment()
         $signaledcomments = $commentManager->getSignaledComments();
 
 
-        require('view/backend/deletecommentView.php');
+        require('view/backend/deleteCommentView.php');
     }
 
 }
@@ -178,7 +177,7 @@ function editPost($page)
             header("Refresh:0");
         }
 
-        require('view/backend/editpostView.php');
+        require('view/backend/editPostView.php');
     }
 
 }
@@ -210,7 +209,7 @@ function editPostForm()
             header('Location: index.php');
         }
 
-        require('view/backend/editpostformView.php');
+        require('view/backend/editPostFormView.php');
     }
 
 }
