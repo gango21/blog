@@ -22,10 +22,7 @@
                 <td><a href="index.php?action=post&postId=<?php echo $posts[$i]->id(); ?>"><?php echo $posts[$i]->title();?></a></td>
                 <td><?php echo strip_tags(substr($posts[$i]->content(),0,30))."...";?></td>
                 <td><a href="index.php?action=editPostForm&id=<?php echo $posts[$i]->id();?>"> <i class="fas fa-pencil-alt"></i></a></td>
-                <td><form method="post" action="">
-                    <input type="hidden" name="post_delete" value="<?php echo $posts[$i]->id(); ?>">
-                    <input type="submit" value="Supprimer" type="hidden">
-                    </form>
+                <td><a href="index.php?action=deletePost&id=<?php echo $posts[$i]->id();?>"> <i class="fas fa-trash"></i></a></td>
                 <td><a href="index.php?action=post&postId=<?php echo $posts[$i]->id(); ?>"><?php echo $commentManager->countComments($posts[$i]->id()); ?> <i class="fa fa-comment"></i></a></td>
                 <td><a href="index.php?action=deleteComment"><?php echo $commentManager->countSignaledComments($posts[$i]->id()); ?> <i class="fas fa-exclamation-triangle"></i></a></td>
             </tr>
