@@ -13,14 +13,8 @@
             <div class="content">
                 <p><?php echo $posts[$i]->content();?></p>
             </div>
-                <form method="post" action="index.php?action=editPostForm&id=<?php echo $posts[$i]->id(); ?>">
-                <input type="hidden" name="id" value="<?php echo $posts[$i]->id(); ?>">
-                <input type="submit" value="Modifier">
-            </form>
-                <form method="post">
-                    <input type="hidden" name="post_delete" value="<?php echo $posts[$i]->id(); ?>">
-                    <input type="submit" value="Supprimer">
-                </form>
+            <a href="index.php?action=deletePost&id=<?php echo $posts[$i]->id();?>"> <i class="fas fa-trash"></i></a>
+            <a href="index.php?action=editPostForm&id=<?php echo $posts[$i]->id();?>"> <i class="fas fa-pencil-alt"></i></a>
             <div class="comment">
                 <a href="index.php?action=post&postId=<?php echo $posts[$i]->id(); ?>"><i class="far fa-comment"></i><?php echo $commentManager->countComments($posts[$i]->id()); ?> commentaire(s)</a>
             </div>
