@@ -3,25 +3,24 @@ session_start();
 require('model/PostManager.php');
 require('model/CommentManager.php');
 require('model/AdminManager.php');
+require('config/ConnectDb.php');
 
 //frontend
 
 function listPosts($page)
 {
-    require('ConnectDb.php');
-    $postManager = new PostManager($db);
+    $postManager = new PostManager($_ENV["DB"]);
     $pagenumber = $page-1;
     $posts = $postManager->getPosts($pagenumber);
-    $commentManager = new CommentManager($db);
+    $commentManager = new CommentManager($_ENV["DB"]);
     require('view/frontend/indexView.php');
 }
 
 function post()
 {
-    require('ConnectDb.php');
-    $postManager = new PostManager($db);
+    $postManager = new PostManager($_ENV["DB"]);
     $post = $postManager->getPost($_GET['postId']);
-    $commentManager = new CommentManager($db);
+    $commentManager = new CommentManager($_ENV["DB"]);
 
     if (isset($_POST['id_post']) && isset($_POST['author']) && isset($_POST['content_comment']))
     {
@@ -44,8 +43,7 @@ function post()
 
 function admin()
 {
-    require('ConnectDb.php');
-    $adminManager = new AdminManager($db);
+    $adminManager = new AdminManager($_ENV["DB"]);
     $admin = $adminManager->connectAdmin();
 
     if (!isset($_POST['user']) OR !isset($_POST['password']) OR ($_POST['user'] != $admin['user'] OR !password_verify($_POST['password'],$admin['password'])))
@@ -70,15 +68,21 @@ function editPassword()
 
     else
     {
-        require('ConnectDb.php');
-        $adminManager = new AdminManager($db);
+        $adminManager = new AdminManager($_ENV["DB"]);
         $admin = $adminManager->connectAdmin();
 
-        if (isset($_POST['password']) && $_POST['id'])
+        if (isset($_POST['password']) && isset($_POST['password_confirm']) && ($_POST['password']) == ($_POST['password_confirm']))
         {
             $id = $_POST['id'];
             $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
             $adminManager->editPassword($id, $password);
+            header("location: index.php?action=editPassword&password_match=yes");
+            exit();
+        }
+        elseif (isset($_POST['password']) && isset($_POST['password_confirm']) && ($_POST['password']) != ($_POST['password_confirm']))
+        {
+            header("location: index.php?action=editPassword&password_match=no");
+            exit();
         }
     }
 
@@ -101,8 +105,7 @@ function addPost()
     }
 
     else{
-        require('ConnectDb.php');
-        $postmanager = new PostManager($db);
+        $postmanager = new PostManager($_ENV["DB"]);
 
         if (isset($_POST['titlepost']) && $_POST['content'])
         {
@@ -128,8 +131,7 @@ function deleteComment()
 
     else
     {
-        require('ConnectDb.php');
-        $commentManager = new CommentManager($db);
+        $commentManager = new CommentManager($_ENV["DB"]);
 
         if (isset($_POST['id_delete']))
         {
@@ -163,11 +165,10 @@ function editPost($page)
 
     else
     {
-        require('ConnectDb.php');
-        $postManager = new PostManager($db);
+        $postManager = new PostManager($_ENV["DB"]);
         $pagenumber = $page-1;
         $posts = $postManager->getPosts($pagenumber);
-        $commentManager = new CommentManager($db);
+        $commentManager = new CommentManager($_ENV["DB"]);
 
 
         if (isset($_POST['post_delete']))
@@ -191,8 +192,7 @@ function editPostForm()
     }
     else
     {
-        require('ConnectDb.php');
-        $postmanager = new PostManager($db);
+        $postmanager = new PostManager($_ENV["DB"]);
 
         if (isset($_GET['id']))
         {
@@ -225,11 +225,9 @@ function signaledComments()
 
     else
     {
-
-        require('ConnectDb.php');
-        $postManager = new PostManager($db);
+        $postManager = new PostManager($_ENV["DB"]);
         $post = $postManager->getPost($_GET['postId']);
-        $commentManager = new CommentManager($db);
+        $commentManager = new CommentManager($_ENV["DB"]);
 
         if (isset($_POST['id_post']) && isset($_POST['author']) && isset($_POST['content_comment']))
         {
@@ -252,6 +250,28 @@ function signaledComments()
 
 }
 
+function goDeletePost($id)
+{
+    if(empty($_SESSION['admin']))
+    {
+        header('Location: index.php');
+        exit();
+    }
+
+    else{
+        $postManager = new PostManager($_ENV["DB"]);
+        $commentManager = new CommentManager($_ENV["DB"]);
+        $posts = $postManager->getAllPosts();
+        $postManager->deletePost($id);
+        echo $_SERVER['REQUEST_URI'];
+        //header('Location: '.$_SERVER['REQUEST_URI']);
+        //$page = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+        //header("Location: $page");
+    }
+
+    require('view/backend/globalView.php');
+}
+
 function globalView()
 {
     if(empty($_SESSION['admin']))
@@ -261,17 +281,9 @@ function globalView()
     }
 
     else{
-    require('ConnectDb.php');
-    $postManager = new PostManager($db);
+    $postManager = new PostManager($_ENV["DB"]);
     $posts = $postManager->getAllPosts();
-    $commentManager = new CommentManager($db);
-
-    if (isset($_POST['post_delete']))
-    {
-        $id = $_POST['post_delete'];
-        $postManager->deletePost($id);
-        header("Refresh:0");
-    }
+    $commentManager = new CommentManager($_ENV["DB"]);
     }
 
     require('view/backend/globalView.php');
