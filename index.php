@@ -53,6 +53,10 @@ if (isset($_GET['action'])) {
     elseif ($_GET['action'] == 'editPassword') {
         editPassword();
     }
+    elseif ($_GET['action'] == 'deletePost') {
+        $id=$_GET['id'];
+        goDeletePost($id);
+    }
     elseif ($_GET['action'] == 'globalView') {
         globalView();
     }
