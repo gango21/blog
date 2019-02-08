@@ -6,10 +6,21 @@
 <body>
     <div class="admin_page">
         <div class="admin">
+            <?php $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+            if (strpos($fullUrl, "password_match=yes") == true ) {
+                echo "Le mot de passe a été modifié";
+            }
+            elseif (strpos($fullUrl, "password_match=no") == true ) {
+                echo "Les mots de passe ne correspondent pas";
+            }
+            ?>
             <form method="post">
                 <input type="text" name="id" value="<?php echo $admin['id'] ?>" hidden><br>
                     <p>Nouveau mot de passe</p>
                     <p><input type="password" name="password" class="form"><br></p>
+                    <p>Confirmez votre mot de passe</p>
+                    <p><input type="password" name="password_confirm" class="form"><br></p>
                 <input type="submit" value="Envoyer">
             </form>
         </div>
