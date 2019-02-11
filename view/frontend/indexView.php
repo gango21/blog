@@ -19,7 +19,7 @@
             </p>
         </div>
         <div class="comment">
-            <a href="index.php?action=post&postId=<?php echo $posts[$i]->id(); ?>"><i class="far fa-comment"></i>
+            <a href="index.php?action=post&postId=<?php echo $posts[$i]->id(); ?>" title="Voir le post et les commentaires"><i class="far fa-comment"></i>
                 <?php echo $commentManager->countComments($posts[$i]->id()); ?> commentaire(s)</a>
         </div>
     </div>
