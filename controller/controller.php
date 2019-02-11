@@ -48,11 +48,13 @@ function admin()
 
     if (!isset($_POST['user']) OR !isset($_POST['password']) OR ($_POST['user'] != $admin['user'] OR !password_verify($_POST['password'],$admin['password'])))
     {
+        require('view/backend/adminConnect.php');
     }
     else if ($_POST['user'] = $admin['user'] && password_verify($_POST['password'],$admin['password'])){
         $_SESSION['admin']=$_POST['user'];
+        require('view/backend/adminView.php');
     }
-    require('view/backend/adminView.php');
+
 }
 
 //backend
