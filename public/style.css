@@ -180,6 +180,17 @@ nav ul li a:hover{
     display: block;
 }
 
+.post_container .admin_edition
+{
+    float: right;
+    margin-right: 20px;
+}
+
+.post_container .admin_edition a
+{
+    margin-left:10px;
+}
+
 .post_container .comment
 {
     margin: auto;
