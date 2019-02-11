@@ -13,10 +13,12 @@
             <div class="content">
                 <p><?php echo $posts[$i]->content();?></p>
             </div>
-            <a href="index.php?action=deletePost&id=<?php echo $posts[$i]->id();?>"> <i class="fas fa-trash"></i></a>
-            <a href="index.php?action=editPostForm&id=<?php echo $posts[$i]->id();?>"> <i class="fas fa-pencil-alt"></i></a>
+            <div class="admin_edition">
+                <a href="index.php?action=deletePost&id=<?php echo $posts[$i]->id();?>" title="Supprimer"> <i class="fas fa-trash"></i></a>
+                <a href="index.php?action=editPostForm&id=<?php echo $posts[$i]->id();?>" title="Editer"> <i class="fas fa-pencil-alt"></i></a>
+            </div>
             <div class="comment">
-                <a href="index.php?action=post&postId=<?php echo $posts[$i]->id(); ?>"><i class="far fa-comment"></i><?php echo $commentManager->countComments($posts[$i]->id()); ?> commentaire(s)</a>
+                <a href="index.php?action=post&postId=<?php echo $posts[$i]->id(); ?>" title="Voir le post et les commentaires"><i class="far fa-comment"></i><?php echo $commentManager->countComments($posts[$i]->id()); ?> commentaire(s)</a>
             </div>
         </div>
             <?php
