@@ -46,13 +46,21 @@ function admin()
     $adminManager = new AdminManager($_ENV["DB"]);
     $admin = $adminManager->connectAdmin();
 
-    if (!isset($_POST['user']) OR !isset($_POST['password']) OR ($_POST['user'] != $admin['user'] OR !password_verify($_POST['password'],$admin['password'])))
-    {
-        require('view/backend/adminConnect.php');
+
+    if(isset($_POST['login-submit'])){
+        if (!isset($_POST['user']) OR !isset($_POST['password']) OR ($_POST['user'] != $admin['user'] OR !password_verify($_POST['password'],$admin['password'])))
+        {
+            require('view/backend/adminConnect.php');
+            header("location: index.php?action=admin&id_error=yes");
+            exit();
+        }
+        else if ($_POST['user'] = $admin['user'] && password_verify($_POST['password'],$admin['password'])){
+            $_SESSION['admin']=$_POST['user'];
+            require('view/backend/adminView.php');
+        }
     }
-    else if ($_POST['user'] = $admin['user'] && password_verify($_POST['password'],$admin['password'])){
-        $_SESSION['admin']=$_POST['user'];
-        require('view/backend/adminView.php');
+    else {
+        require('view/backend/adminConnect.php');
     }
 
 }
