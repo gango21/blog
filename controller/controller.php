@@ -263,10 +263,7 @@ function goDeletePost($id)
         $commentManager = new CommentManager($_ENV["DB"]);
         $posts = $postManager->getAllPosts();
         $postManager->deletePost($id);
-        echo $_SERVER['REQUEST_URI'];
-        //header('Location: '.$_SERVER['REQUEST_URI']);
-        //$page = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        //header("Location: $page");
+        header("Location: index.php");
     }
 
     require('view/backend/globalView.php');
