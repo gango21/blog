@@ -1,14 +1,18 @@
 <?php
 require 'Post.php';
+require('config/ConnectDb.php');
 
 class PostManager
 
 {
     private $_db;
-
     public function __construct($db)
     {
         $this->setDb($db);
+    }
+    public function setDb(PDO $db)
+    {
+        $this->_db = $db;
     }
 
     public function getPosts($pagenumber)
@@ -21,8 +25,8 @@ class PostManager
             $posts[] = new Post($donnees);
         }
         return $posts;
+        var_dump($posts);
     }
-
     public function getAllPosts()
     {
         $posts=[];
@@ -34,7 +38,6 @@ class PostManager
         }
         return $posts;
     }
-
     public function getPost($id)
     {
         $id = (int) $id;
@@ -42,33 +45,24 @@ class PostManager
         $donnees = $q->fetch(PDO::FETCH_ASSOC);
         return new Post($donnees);
     }
-
     public function addPost($title, $content)
     {
         $date = date("Y-m-d H:i:s");
         $q = $this->_db->prepare('INSERT INTO posts(title, content, date_creation) VALUES(?, ?, ?)');
         $q->execute(array($title, $content, $date));
     }
-
     public function editPost($id, $title, $content)
     {
         $date = date("Y-m-d H:i:s");
         $querry = 'UPDATE posts SET title ="' .$title.'", content = "'.$content.'", date_creation = "'.$date.'" WHERE id=' .$id;
         $q = $this->_db->exec($querry);
     }
-
     public function deletePost($id)
     {
         $q = $this->_db->exec('DELETE FROM posts WHERE id=' .$id);
-        require('controller/ConnectDb.php');
-        $commentManager = new CommentManager($db);
+        $commentManager = new CommentManager($_ENV["DB"]);
         $commentManager->deletePostComments($id);
 
-    }
-
-    public function setDb(PDO $db)
-    {
-        $this->_db = $db;
     }
 }
 ?>
