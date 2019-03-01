@@ -7,8 +7,8 @@
                 for ($i=0; $i<count($posts); $i++){?>
     <div class="post_container">
         <div class="header">
-            <div class="title"><span><i class="far fa-file-alt"></i>
-                    <?php echo $posts[$i]->title();?></span></div>
+            <div class="title"><a href="index.php?action=post&postId=<?php echo $posts[$i]->id(); ?>"> <span><i class="far fa-file-alt"></i>
+                <?php echo $posts[$i]->title();?></span></a></div>
             <div class="date_creation"><span><i class="far fa-calendar-alt"></i>
                     <?php echo date("d-m-Y H:i",strtotime($posts[$i]->date_creation()))?>
                     <?php ?></span></div>
@@ -25,12 +25,17 @@
     </div>
     <?php
                 }
-
                 ?>
     <div class="page_navigation">
-        <a href="index.php?action=listPosts&page=<?php echo $page-1 ?>"><i class="fas fa-caret-left"></i></a>
-        <?php echo $page ?>
-        <a href="index.php?action=listPosts&page=<?php echo $page+1 ?>"><i class="fas fa-caret-right"></i></a>
+        <select id="selectbox" name="" onchange="javascript:location.href = this.value;">
+            <option value="#">--Page--</option>
+            <?php
+            for ($i=0; $i<$pages_count; $i++){ ?>
+            <option value="index.php?action=listPosts&page=<?php echo $i+1; ?>"><?php echo $i+1; ?></option>
+            <?php
+            }
+            ?>
+        </select>
     </div>
 </div>
 <?php $content = ob_get_clean(); ?>
