@@ -60,6 +60,12 @@ if (isset($_GET['action'])) {
     elseif ($_GET['action'] == 'globalView') {
         globalView();
     }
+    elseif( $_GET['action'] == 'tempPassword'){
+        tempPassword();
+    }
+    elseif( $_GET['action'] == 'editEmail'){
+        editEmail();
+    }
 }
 else {
     listPosts(1);
