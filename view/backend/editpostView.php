@@ -25,9 +25,15 @@
                                           }
             ?>
         <div class="page_navigation">
-            <a href="index.php?action=editPost&page=<?php echo $page-1 ?>"><i class="fas fa-caret-left"></i></a>
-            <?php echo $page ?>
-            <a href="index.php?action=editPost&page=<?php echo $page+1 ?>"><i class="fas fa-caret-right"></i></a>
+            <select id="selectbox" name="" onchange="javascript:location.href = this.value;">
+                <option value="#">--Page--</option>
+                <?php
+                for ($i=0; $i<$pages_count; $i++){ ?>
+                <option value="index.php?action=editPost&page=<?php echo $i+1; ?>"><?php echo $i+1; ?></option>
+                <?php
+                                                 }
+                ?>
+            </select>
         </div>
 
     </div>
