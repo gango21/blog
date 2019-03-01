@@ -9,10 +9,10 @@
             <?php $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
             if (strpos($fullUrl, "password_match=yes") == true ) {
-                echo "Le mot de passe a été modifié";
+                echo "<p>Le mot de passe a été modifié</p>";
             }
             elseif (strpos($fullUrl, "password_match=no") == true ) {
-                echo "Les mots de passe ne correspondent pas";
+                echo "<p>Les mots de passe ne correspondent pas</p>";
             }
             ?>
             <form method="post">
