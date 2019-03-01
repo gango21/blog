@@ -34,10 +34,11 @@
 
 
     <?php
-            for ($i=0; $i<count($comments); $i++){?>
+    for ($i=0; $i<count($comments); $i++){?>
     <div class="comments_header">
         <div class="author"><i class="far fa-user"></i><strong>
-                <?php echo $comments[$i]->author(); ?></strong></div>
+        <?php echo $comments[$i]->author(); ?></strong>
+        </div>
         <div class="date"><i class="far fa-calendar-alt"></i>le
             <?php echo date("d-m-Y",strtotime($comments[$i]->date_comment())); ?> à
             <?php echo date("H:i",strtotime($comments[$i]->date_comment())); ?>
@@ -51,23 +52,23 @@
             <input type="hidden" name="id" value="<?php echo $comments[$i]->id(); ?>">
             <input type="hidden" name="signal_comment" value="1">
             <?php $signal = $comments[$i]->signal_comment();
-                                                  if ($signal != 0){?>
+            if ($signal != 0){?>
             <input type="submit" value="Commentaire signalé" disabled>
             <?php
-                                                  }
-                                                  else{
-                ?>
+            }
+            else{
+            ?>
             <span title="Signaler ce commentaire"><input type="submit" value="!" ;></span>
             <?php
-                                                  }
-                ?>
-        </form>
-    </div>
-
-    <?php
             }
             ?>
+        </form>
+    </div>
+    <?php
+    }
+    ?>
 </div>
+
 <div class="comment_form">
     <form action="index.php?action=post&postId=<?php echo $post->id(); ?>" method="post">
         Nom
