@@ -19,6 +19,7 @@
                 <input type="submit" value="LOGIN" name="login-submit"/>
             </p>
         </form>
+        <p><a href="index.php?action=tempPassword">Mot de passe oublié ?</a></p>
     </div>
 </div>
 
