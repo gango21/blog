@@ -6,10 +6,12 @@ class PostManager
 
 {
     private $_db;
+
     public function __construct($db)
     {
         $this->setDb($db);
     }
+
     public function setDb(PDO $db)
     {
         $this->_db = $db;
@@ -27,6 +29,15 @@ class PostManager
         return $posts;
         var_dump($posts);
     }
+
+    public function countPages()
+    {
+        $q = $this->_db->query('SELECT COUNT(*) FROM posts');
+        $donnees = $q->fetch(PDO::FETCH_ASSOC);
+        $pages_count=ceil($donnees['COUNT(*)']/5);
+        return $pages_count;
+    }
+
     public function getAllPosts()
     {
         $posts=[];
@@ -38,6 +49,7 @@ class PostManager
         }
         return $posts;
     }
+
     public function getPost($id)
     {
         $id = (int) $id;
@@ -45,18 +57,21 @@ class PostManager
         $donnees = $q->fetch(PDO::FETCH_ASSOC);
         return new Post($donnees);
     }
+
     public function addPost($title, $content)
     {
         $date = date("Y-m-d H:i:s");
         $q = $this->_db->prepare('INSERT INTO posts(title, content, date_creation) VALUES(?, ?, ?)');
         $q->execute(array($title, $content, $date));
     }
+
     public function editPost($id, $title, $content)
     {
         $date = date("Y-m-d H:i:s");
         $querry = 'UPDATE posts SET title ="' .$title.'", content = "'.$content.'", date_creation = "'.$date.'" WHERE id=' .$id;
         $q = $this->_db->exec($querry);
     }
+
     public function deletePost($id)
     {
         $q = $this->_db->exec('DELETE FROM posts WHERE id=' .$id);
