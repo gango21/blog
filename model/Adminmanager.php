@@ -2,7 +2,6 @@
 
 class AdminManager
 {
-    //Connexion à la base de données
 
     private $_db;
 
@@ -18,7 +17,7 @@ class AdminManager
 
     public function connectAdmin()
     {
-        $q = $this->_db->query('SELECT id, user, password FROM admin');
+        $q = $this->_db->query('SELECT id, user, password, mail FROM admin');
         $admin = $q->fetch(PDO::FETCH_ASSOC);
         return $admin;
     }
@@ -27,6 +26,22 @@ class AdminManager
     {
         $querry = 'UPDATE admin SET password ="'.$password.'" WHERE id =' .$id;
         $q = $this->_db->exec($querry);
+    }
+
+    public function editEmail($id, $email)
+    {
+        $querry = 'UPDATE admin SET mail ="'.$email.'" WHERE id =' .$id;
+        $q = $this->_db->exec($querry);
+    }
+
+    public function resetPassword()
+    {
+        $id =1;
+        $temp_password=rand(100000,999999);
+        $password = password_hash($temp_password, PASSWORD_BCRYPT);
+        $querry = 'UPDATE admin SET password ="'.$password.'" WHERE id =' .$id;
+        $q = $this->_db->exec($querry);
+        return $temp_password;
     }
 }
 
