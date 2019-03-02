@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    <?php $title="Changer de mot de passe"; ?>
+    <?php $title="Mot de passe temporaire"; ?>
     <?php ob_start(); ?>
 
     <body>
