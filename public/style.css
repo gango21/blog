@@ -637,6 +637,22 @@ body
     padding-left: 0px;
 }
 
+.comments_content
+{
+    flex-direction: column;
+}
+
+.comments_content p
+{
+    width: 70%;
+}
+
+.comments_content form input[value="Supprimer"], input[value="Ignorer"] {
+    margin: 10px;
+    float: right;
+    margin-right: 20px;
+}
+
 .admin_page
 {
     width: 80%;
