@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<?php $title="Admin"; ?>
+<?php $title="Vue d'ensemble"; ?>
 <?php ob_start();
 
  if (isset($_SESSION['admin'])){ ?>
